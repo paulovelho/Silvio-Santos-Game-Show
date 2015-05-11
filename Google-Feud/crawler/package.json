@@ -1,0 +1,20 @@
+{
+  "name": "Google-Feud-Crawler",
+  "version": "0.0.1",
+  "description": "Crawler to gather information for Google Feud",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "1.x",
+    "color-logs": "git+https://github.com/paulovelho/Color-Logs",
+    "express": "4.x",
+    "fs": "*",
+    "mysql": "^2.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "clear && node_modules/.bin/mocha",
+    "start": "clear && node index.js"
+  },
+  "author": "Element Software",
+  "license": "ISC"
+}
