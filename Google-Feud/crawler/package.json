@@ -8,7 +8,10 @@
     "color-logs": "git+https://github.com/paulovelho/Color-Logs",
     "express": "4.x",
     "fs": "*",
-    "mysql": "^2.5.1"
+    "iconv-lite": "0.4.8",
+    "mysql": "^2.5.1",
+    "request": "2.x",
+    "xml2js": "0.4.8"
   },
   "devDependencies": {},
   "scripts": {

@@ -4,9 +4,6 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
 
-var Constants = require("./libs/Constants");
-log.Debug(Constants);
-
 app.use(bodyParser.urlencoded({ extended: false }));
 
 var server = app.listen(8007, function(){
@@ -32,9 +29,11 @@ var server = app.listen(8007, function(){
 	});
 
 	app.post("/feud", function(req, res){
+		var Craw = require("./craw");
 		var query = req.body.query;
-		var url = Constants.SuggestUrl + query;
-		res.send("looking for " + url);
+		Craw.Suggest(query, function(data){
+			res.send(data);
+		});
 	});
 
 });

@@ -22,6 +22,11 @@
 			button {
 				width: 100%;
 			}
+			textarea {
+				width: 100%;
+				height: 200px;
+				margin-top: 20px;
+			}
 		</style>
 	</head>
 	<body>
@@ -29,7 +34,7 @@
 			<div id="details_container">
 				<input type="text" id="query"/><br/>
 				<button onClick="feudme();">FEUD!</button><br/>
-				<pre id="response"></pre>
+				<textarea id="response" disabled="disabled"></textarea>
 			</div>
 		</div>
 	</body>
@@ -38,12 +43,17 @@
 	<script type="text/javascript">
 function feudme(){
 	var q = $("#query").val();
+	if(!q) {
+		$("#response").val("=)");
+		return;
+	}
+	$("#response").val("loading " + q + "...");
 	$.ajax({
 		url: "/feud", type: "POST",
 		data: { query: q },
 		success: function(data) {
 			console.info(data);
-			$("#response").html(data);
+			$("#response").val(data);
 		}
 	});
 }
