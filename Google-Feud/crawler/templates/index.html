@@ -34,7 +34,8 @@
 			<div id="details_container">
 				<input type="text" id="query"/><br/>
 				<button onClick="feudme();">FEUD!</button><br/>
-				<textarea id="response" disabled="disabled"></textarea>
+				<textarea id="response" disabled="disabled"></textarea><br/><br/>
+				<button onClick="addme();" id="addme" style="display: none;">Adicionar!</button><br/>
 			</div>
 		</div>
 	</body>
@@ -43,6 +44,7 @@
 	<script type="text/javascript">
 function feudme(){
 	var q = $("#query").val();
+	$("#addme").fadeOut();
 	if(!q) {
 		$("#response").val("=)");
 		return;
@@ -54,8 +56,12 @@ function feudme(){
 		success: function(data) {
 			console.info(data);
 			$("#response").val(data);
+			$("#addme").fadeIn("slow");
 		}
 	});
+}
+function addme(){
+	$("#response").val("=(");
 }
 	</script>
 
