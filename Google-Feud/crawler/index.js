@@ -6,6 +6,8 @@ var app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+var fileLocation = "./data/queries.txt";
+
 var server = app.listen(8007, function(){
 
 	var template_options = {
@@ -33,6 +35,15 @@ var server = app.listen(8007, function(){
 		var query = req.body.query;
 		Craw.Suggest(query, function(data){
 			res.send(data);
+		});
+	});
+	app.post("/add", function(req, res){
+		var query = req.body.query;
+		log.Debug("adding " + query);
+		fs.open(fileLocation, "a+", function(e, file){
+			fs.write(file, query+" \n", "utf-8", function(){
+				fs.close(file);
+			});
 		});
 	});
 

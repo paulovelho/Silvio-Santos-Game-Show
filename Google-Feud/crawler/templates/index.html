@@ -61,8 +61,14 @@ function feudme(){
 	});
 }
 function addme(){
-	$("#response").val("=(");
-}
+	var q = $("#query").val();
+	$.ajax({
+		url: "/add", type: "POST",
+		data: { query: q },
+		success: function(data) {
+			console.info(data);
+		}
+	});}
 	</script>
 
 </html>
